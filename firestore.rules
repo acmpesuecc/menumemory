@@ -1,0 +1,23 @@
+rules_version = '2';
+
+service cloud.firestore {
+  match /databases/{database}/documents {
+    
+    // Rules for the restaurants collection
+    match /restaurants/{restaurantId} {
+      // Allow anyone (authenticated or not) to read restaurant data
+      allow read: if true;
+      // Deny write, update, and delete access for all users
+      allow write, update, delete: if false;
+    }
+    
+    // Rules for the users collection
+    match /users/{userId} {
+      // Allow signed-in users to read/write/delete only their own document and sub-collections
+      allow read, write, delete: if request.auth != null && request.auth.uid == userId;
+      
+      // Deny access to other users' documents
+      allow read, write, delete: if false;
+    }
+  }
+}
