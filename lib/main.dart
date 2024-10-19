@@ -3,6 +3,7 @@ import 'package:firebase_core/firebase_core.dart';
 import 'package:firebase_ui_auth/firebase_ui_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:menumemory/screens/home.dart';
+import 'package:menumemory/screens/addvisits.dart';
 
 import 'firebase_options.dart';
 
@@ -22,12 +23,12 @@ class MyApp extends StatelessWidget {
 
     return MaterialApp(
       theme: ThemeData(
-        primarySwatch: Colors.purple,
-        appBarTheme: AppBarTheme(
-          backgroundColor: Color.fromARGB(255, 233, 221, 255),
-        )
-      ),
-      initialRoute: FirebaseAuth.instance.currentUser == null ? '/sign-in' : '/home',
+          primarySwatch: Colors.purple,
+          appBarTheme: AppBarTheme(
+            backgroundColor: Color.fromARGB(255, 233, 221, 255),
+          )),
+      initialRoute:
+          FirebaseAuth.instance.currentUser == null ? '/sign-in' : '/home',
       routes: {
         '/sign-in': (context) {
           return SignInScreen(
@@ -39,7 +40,7 @@ class MyApp extends StatelessWidget {
             ],
           );
         },
-        '/home' : (context) => HomeScreen(),
+        '/home': (context) => HomeScreen(),
         '/profile': (context) {
           return ProfileScreen(
             providers: providers,
@@ -50,6 +51,7 @@ class MyApp extends StatelessWidget {
             ],
           );
         },
+        '/addvisit': (context) => AddVisit(),
       },
     );
   }

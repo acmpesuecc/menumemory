@@ -1,5 +1,3 @@
-import 'dart:ffi';
-
 class Restaurant {
   String id;
   String name;
@@ -8,14 +6,13 @@ class Restaurant {
   String? mapsLink;
   double? mapsRatingOutOf5;
 
-  Restaurant({
-    required this.id,
-    required this.name,
-    required this.area,
-    required this.address,
-    this.mapsLink,
-    this.mapsRatingOutOf5
-  });
+  Restaurant(
+      {required this.id,
+      required this.name,
+      required this.area,
+      required this.address,
+      this.mapsLink,
+      this.mapsRatingOutOf5});
 
   String displayText() {
     Map<String, dynamic> res = {};
